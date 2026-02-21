@@ -12,4 +12,5 @@ cp ~/XXX/*.md ~/.claude/commands/
 ```bash
 claude /security-audit    # Full security audit → generates SECURITY_AUDIT.md
 claude /optimize-perf     # Full perf audit → generates PERFORMANCE_AUDIT.md
+claude /qa-report-and-ghac         # QA audit + writes tests + sets up CI/CD → QA_REPORT.md
 ```
