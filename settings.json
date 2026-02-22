@@ -1,4 +1,22 @@
 {
+  "permissions": {
+    "allowedTools": [
+      "Read",
+      "Write",
+      "Cat",
+      "Grep",
+      "Bash(pnpm *)",
+      "Bash(git *)",
+      "Bash(ts-node *)"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Read(private_keys*)",
+      "Read(.solana*)",
+      "Write(production.config.*)",
+      "Write(.env*)"
+    ]
+  },
   "hooks": {
     "Notification": [
       {
@@ -6,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"Antigravity\""
+            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"antigravity\""
           }
         ]
       }
@@ -17,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"Antigravity\""
+            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"antigravity\""
           }
         ]
       }
@@ -28,11 +46,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"Antigravity\""
+            "command": "osascript -e 'display notification \"Task complete\" with title \"Claude Code\" sound name \"Glass\"' && open -a \"antigravity\""
           }
         ]
       }
     ]
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/status-line.sh"
+  }
+  
 }
