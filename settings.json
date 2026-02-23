@@ -1,20 +1,62 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "allowedTools": [
+    "allow": [
       "Read",
       "Write",
-      "Cat",
+      "Edit",
+      "Glob",
       "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Task(Explore)",
+      "Read(.env.example)",
+      "Read(**/.env.example)",
       "Bash(pnpm *)",
+      "Bash(pnpx *)",
       "Bash(git *)",
-      "Bash(ts-node *)"
+      "Bash(gh *)",
+      "Bash(ts-node *)",
+      "Bash(node *)",
+      "Bash(tsc *)",
+      "Bash(trash *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(touch *)",
+      "Bash(ls *)",
+      "Bash(open *)",
+      "Bash(which *)",
+      "Bash(wc *)",
+      "Bash(diff *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(pwd)",
+      "Bash(date)",
+      "Bash(echo *)",
+      "Bash(chmod *)",
+      "Bash(brew *)"
     ],
     "deny": [
-      "Read(.env*)",
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(rmdir *)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
       "Read(private_keys*)",
       "Read(.solana*)",
       "Write(production.config.*)",
-      "Write(.env*)"
+      "Write(.env)",
+      "Write(.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)"
     ]
   },
   "hooks": {
@@ -50,13 +92,49 @@
           }
         ]
       }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Context is about to be compacted. If a sprint is in progress (check if SPRINT_STATUS.md exists and has an 'In Progress' sprint), immediately: 1) Commit any uncommitted work with 'wip()' prefix, staging specific files only. 2) Write a detailed Handoff section in SPRINT_STATUS.md with last action, next action, files modified, and remaining tasks. 3) Tell the user the session was auto-saved and how to resume. If no sprint is in progress, do nothing.",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   },
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+  },
   "effortLevel": "high",
-
+  "autoUpdatesChannel": "stable",
+  "respectGitignore": true,
+  "language": "french",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Cooking",
+      "Brewing",
+      "Conjuring",
+      "Forging",
+      "Crafting",
+      "Assembling",
+      "Weaving",
+      "Summoning",
+      "Distilling",
+      "Sculpting",
+      "Gooning"
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/status-line.sh"
   }
-  
 }
