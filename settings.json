@@ -1,9 +1,25 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "respectGitignore": true,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Read",
       "Write",
+      "Bash(rg *)",
+      "Bash(fd *)",
+      "Bash(tree *)",
+      "Bash(stat *)",
+      "Bash(unzip *)",
+      "Bash(zip *)",
+      "Bash(pkill *)",
+      "Bash(kill *)",
       "Edit",
       "Glob",
       "Grep",
@@ -63,7 +79,11 @@
       "Bash(mktemp *)",
       "Bash(basename *)",
       "Bash(dirname *)",
-      "Bash(realpath *)"
+      "Bash(realpath *)",
+      "Task(Plan)",
+      "Task(Implement)",
+      "Task(Refactor)",
+      "Task(Test)"
     ],
     "deny": [
       "Bash(rm *)",
@@ -83,7 +103,17 @@
       "Edit(.env)",
       "Edit(.env.*)",
       "Edit(**/.env)",
-      "Edit(**/.env.*)"
+      "Edit(**/.env.*)",
+      "Bash(sudo *)",
+      "Bash(dd *)",
+      "Bash(shutdown *)",
+      "Bash(reboot *)",
+      "Bash(chown *)",
+      "Read(**/id.json)",
+      "Read(**/wallet.json)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.secret)"
     ]
   },
   "hooks": {
@@ -93,7 +123,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"antigravity\""
+            "command": "osascript -e 'beep' && zed $PWD"
           }
         ]
       }
@@ -104,7 +134,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Awaiting your input\" with title \"Claude Code\" sound name \"Ping\"' && open -a \"antigravity\""
+            "command": "osascript -e 'beep' && zed $PWD"
           }
         ]
       }
@@ -115,7 +145,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Task complete\" with title \"Claude Code\" sound name \"Glass\"' && open -a \"antigravity\""
+            "command": "osascript -e 'beep' && zed $PWD"
           }
         ]
       }
@@ -133,17 +163,14 @@
       }
     ]
   },
-  "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/status-line.sh"
   },
-  "effortLevel": "high",
-  "autoUpdatesChannel": "stable",
-  "respectGitignore": true,
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true
+  },
   "language": "french",
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
@@ -161,8 +188,5 @@
       "Pretending to understand"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/status-line.sh"
-  }
+  "autoUpdatesChannel": "stable"
 }
