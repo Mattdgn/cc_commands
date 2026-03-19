@@ -1,41 +1,41 @@
 # Claude Code Config
 
-Ma configuration Claude Code personnelle. À copier dans `~/.claude/`.
+My personal Claude Code configuration. Copy to `~/.claude/`.
 
-## Contenu
+## Contents
 
 ### `settings.json`
-Configuration globale :
-- **Permissions** — allow/deny granulaires (pas de `rm`, pas de lecture `.env`, etc.)
-- **Hooks** — beep + focus Zed sur Notification/PermissionRequest/Stop, sprint auto-save sur PreCompact
-- **Status line** — barre custom mono minimal (voir `status-line.sh`)
+Global configuration:
+- **Permissions** — granular allow/deny (no `rm`, no `.env` reads, etc.)
+- **Hooks** — beep + focus Zed on Notification/PermissionRequest/Stop, sprint auto-save on PreCompact
+- **Status line** — custom mono minimal bar (see `status-line.sh`)
 - **Plugins** — swift-lsp, vercel-plugin
-- **Spinner** — messages custom humoristiques
-- **Langue** — français
+- **Spinner** — custom humorous messages
+- **Language** — french
 
 ### `CLAUDE.md`
-Instructions globales : stack (Next.js/TS/Tailwind/shadcn/Hono), standards (strict TS, max 70 lignes), pnpm only, pas de rm.
+Global instructions: stack (Next.js/TS/Tailwind/shadcn/Hono), standards (strict TS, max 70 lines), pnpm only, no rm.
 
 ### `status-line.sh`
-Status line mono minimal : dossier, branche git, modèle, coût, tokens, barre de contexte, durée.
+Mono minimal status line: directory, git branch, model, cost, tokens, context bar, duration.
 
 ### `commands/`
-Slash commands personnalisées :
-- `/security-audit` — audit sécu complet → `SECURITY_AUDIT.md`
-- `/optimize-perf` — audit perf complet → `PERFORMANCE_AUDIT.md`
-- `/qa-report-and-ghac` — audit QA + tests + CI/CD → `QA_REPORT.md`
-- `/inte-forge-connect` — intégration ForgeConnect
+Custom slash commands:
+- `/security-audit` — full security audit → `SECURITY_AUDIT.md`
+- `/optimize-perf` — full performance audit → `PERFORMANCE_AUDIT.md`
+- `/qa-report-and-ghac` — QA audit + tests + CI/CD → `QA_REPORT.md`
+- `/inte-forge-connect` — ForgeConnect integration
 
 ### `skills/`
-Skills installées :
-- `find-skills` — découverte de skills
-- `frontend-design` — design frontend distinctif et production-grade
-- `next-best-practices` — conventions Next.js (RSC, data patterns, metadata, etc.)
-- `shadcn-ui` — patterns shadcn/ui complets
-- `skill-creator` — guide de création de skills
-- `solana-dev` — playbook Solana end-to-end
-- `sprint-runner` — exécution autonome de sprints documentation-first
-- `vercel-react-best-practices` — optimisation React/Next.js Vercel Engineering
+Installed skills:
+- `find-skills` — skill discovery
+- `frontend-design` — distinctive, production-grade frontend design
+- `next-best-practices` — Next.js conventions (RSC, data patterns, metadata, etc.)
+- `shadcn-ui` — complete shadcn/ui patterns
+- `skill-creator` — skill creation guide
+- `solana-dev` — end-to-end Solana playbook
+- `sprint-runner` — autonomous documentation-first sprint execution
+- `vercel-react-best-practices` — React/Next.js optimization by Vercel Engineering
 
 ## Setup
 
