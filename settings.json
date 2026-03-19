@@ -168,7 +168,16 @@
     "command": "~/.claude/status-line.sh"
   },
   "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "vercel-plugin@vercel-vercel-plugin": true
+  },
+  "extraKnownMarketplaces": {
+    "vercel-vercel-plugin": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/matt/.cache/plugins/github.com-vercel-vercel-plugin"
+      }
+    }
   },
   "language": "french",
   "spinnerVerbs": {

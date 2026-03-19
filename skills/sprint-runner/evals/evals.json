@@ -1,0 +1,181 @@
+{
+  "skill_name": "sprint-runner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "ok i'm starting a new session on my forgepay project. claude.md is at the root, i finished sprint 2 last week (stripe connect onboarding). can you run sprint 3 for me? it's the double-entry ledger",
+      "expected_output": "Boots: reads CLAUDE.md + SPRINT_STATUS.md, runs pre-flight scan on existing codebase, announces Sprint 3 plan with codebase context + TaskCreate per deliverable, implements data layer first using patterns from existing code, runs quality gates + full regression suite, stages specific files, commits, outputs metrics + retro, updates SPRINT_STATUS.md",
+      "expectations": [
+        "Reads CLAUDE.md before writing any code",
+        "Reads SPRINT_STATUS.md to confirm Sprint 2 is done",
+        "Runs pre-flight codebase scan — finds existing services/models to match patterns",
+        "Announces plan with 'Codebase context' section showing discovered patterns",
+        "Creates tasks with TaskCreate for each deliverable",
+        "Marks tasks in_progress/completed via TaskUpdate as work progresses",
+        "Implements data layer (schema/migrations) before business logic",
+        "Mirrors existing code patterns (naming, exports, error handling)",
+        "Uses build/lint/test commands from CLAUDE.md, not hardcoded ones",
+        "Runs full test suite (not just Sprint 3 tests) for regression check",
+        "Stages specific files with git add, never git add -A",
+        "Commits with conventional message referencing Sprint 3",
+        "Reports post-sprint metrics (files changed, lines, test count)",
+        "Writes retro in SPRINT_STATUS.md (smooth, friction, watch)",
+        "Updates SPRINT_STATUS.md marking Sprint 3 complete with metrics"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "next sprint",
+      "expected_output": "Reads SPRINT_STATUS.md, identifies last completed sprint, executes the next one following full protocol with all advanced protocols",
+      "expectations": [
+        "Reads SPRINT_STATUS.md without being told to",
+        "Correctly identifies which sprint is next",
+        "Does not ask the user which sprint to run",
+        "Runs pre-flight codebase scan before implementing",
+        "Follows the full execution protocol with all 6 phases",
+        "Creates TaskCreate items for the sprint deliverables",
+        "Runs cross-sprint regression check",
+        "Outputs metrics and retro at close"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "resume — i had to close claude last night mid-sprint 4, i was in the middle of the solana transaction builder",
+      "expected_output": "Reads SPRINT_STATUS.md Handoff section including saved codebase context, resumes from exact step where session ended, does not restart sprint or re-scan codebase",
+      "expectations": [
+        "Reads SPRINT_STATUS.md Handoff section",
+        "Uses saved 'Codebase context' from handoff instead of re-scanning",
+        "Resumes from the exact last action, not from Sprint 4 start",
+        "Does not re-implement already completed sprint 4 tasks",
+        "Recreates TaskCreate items for remaining work only",
+        "Continues the commit trail correctly"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "the context window is getting full, can you save our progress and wrap up cleanly",
+      "expected_output": "Commits partial work with wip commit (staging specific files), writes detailed Handoff in SPRINT_STATUS.md including codebase context and remaining tasks, tells user how to resume",
+      "expectations": [
+        "Commits partial work with specific file staging (not git add -A)",
+        "Uses wip() commit message format",
+        "Writes Handoff section in SPRINT_STATUS.md",
+        "Handoff includes: last action, next action, files modified, remaining tasks",
+        "Handoff includes codebase context so next session skips re-scanning",
+        "Tells user exactly what to say to resume"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "i want to start a new project from scratch, i have an architecture doc in notion but no claude.md yet. where do i start?",
+      "expected_output": "Does NOT try to run a sprint. Offers to help structure a CLAUDE.md with sprint definitions. Explains minimum structure needed.",
+      "expectations": [
+        "Does not attempt to run a sprint without CLAUDE.md",
+        "Offers to help create CLAUDE.md",
+        "Explains minimum CLAUDE.md structure needed for sprint-runner",
+        "Does not fabricate sprint definitions"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "execute all remaining sprints",
+      "expected_output": "Reads SPRINT_STATUS.md, identifies all remaining sprints, executes them sequentially with full protocol per sprint, commit between each, pause between sprints",
+      "expectations": [
+        "Reads SPRINT_STATUS.md to identify completed and remaining sprints",
+        "Executes sprints in order, not in parallel",
+        "Runs pre-flight scan once, reuses codebase context across sprints",
+        "Commits after each sprint individually",
+        "Runs cross-sprint regression after each sprint",
+        "Updates SPRINT_STATUS.md with metrics + retro after each sprint",
+        "Pauses between sprints to ask user for confirmation before next",
+        "Does not skip any phase of the execution protocol for any sprint"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "run sprint 3 — the typescript build is failing with 15 type errors after i implement the services",
+      "expected_output": "Does not brute-force or use 'any' to silence errors. Reads error output, fixes root causes, re-runs typecheck. If stuck after 3 attempts, stops and asks user.",
+      "expectations": [
+        "Reads the full typecheck error output",
+        "Fixes type errors at root cause, not with 'any' or 'as' casts",
+        "Re-runs typecheck after fixes to verify",
+        "Does not proceed to commit while errors exist",
+        "If stuck after multiple attempts, stops and asks user for guidance",
+        "Does not disable strict mode or loosen tsconfig"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "continue",
+      "expected_output": "Treats 'continue' same as 'next sprint' — reads SPRINT_STATUS.md, finds next sprint, runs it with full protocol",
+      "expectations": [
+        "Does not ask 'continue what?' — reads SPRINT_STATUS.md automatically",
+        "Identifies the next sprint correctly",
+        "Follows full boot sequence and execution protocol",
+        "Creates TaskCreate items for tracking"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "sprint 2 has a task to add a .env var for STRIPE_SECRET_KEY. make sure it's handled properly",
+      "expected_output": "Adds the env var to .env.example only (never to .env), documents it, ensures it's read via process.env at runtime, never hardcoded. Auto .env.example sync catches any missing vars.",
+      "expectations": [
+        "Never writes actual secret values to any committed file",
+        "Adds placeholder to .env.example with descriptive comment",
+        "Reads the value from process.env in code",
+        "Does not stage .env files",
+        "Secret scan in commit protocol would catch any mistake",
+        "Auto .env.example sync verifies all process.env refs have entries"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "run sprint 5 — it's a full-stack feature with auth, API routes, services, database schema, and a React frontend. about 20 files total",
+      "expected_output": "Detects sprint is too large for single context. Proposes splitting into sub-sprints by layer (data, services, API, frontend). Asks user for confirmation before starting.",
+      "expectations": [
+        "Estimates context budget before starting implementation",
+        "Identifies sprint as 'too large' (15+ files)",
+        "Proposes sub-sprint split by layer",
+        "Does NOT start implementing before user confirms the split",
+        "Each sub-sprint would commit independently",
+        "Sub-sprints follow full execution protocol"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "run sprint 3 — i already have src/services/auth.ts and src/services/payment.ts in the codebase. this sprint adds src/services/ledger.ts",
+      "expected_output": "Pre-flight scan reads existing services, extracts their patterns (error handling, exports, naming), and mirrors them exactly in the new ledger service",
+      "expectations": [
+        "Scans existing src/services/ before writing ledger.ts",
+        "Reads at least one existing service file to extract patterns",
+        "Reports codebase context in ANNOUNCE phase",
+        "New ledger.ts mirrors existing service structure",
+        "Reuses existing error types, utilities, and patterns",
+        "Does not introduce new patterns that contradict existing ones"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "sprint 4 is done but i think it broke the auth tests from sprint 2. can you check?",
+      "expected_output": "Runs full test suite, identifies failing sprint 2 tests, fixes the regression in sprint 4 code (not by modifying sprint 2 tests), re-runs until all pass, commits the fix",
+      "expectations": [
+        "Runs full test suite to identify regression",
+        "Does NOT modify sprint 2 tests to make them pass",
+        "Fixes the issue in sprint 4 code that broke the contract",
+        "Re-runs full suite to confirm everything passes",
+        "Commits the regression fix as a separate commit",
+        "Updates SPRINT_STATUS.md with the fix"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "let's build",
+      "expected_output": "Recognizes 'let's build' as a sprint trigger. Reads CLAUDE.md + SPRINT_STATUS.md, determines next sprint, runs full protocol.",
+      "expectations": [
+        "Recognizes 'let's build' as a trigger for sprint execution",
+        "Does not ask 'build what?' — reads SPRINT_STATUS.md automatically",
+        "Follows full boot sequence",
+        "Runs pre-flight scan and all advanced protocols"
+      ]
+    }
+  ]
+}
